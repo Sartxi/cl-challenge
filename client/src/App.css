@@ -33,6 +33,7 @@ body {
   background-color: var(--bodyBg);
   color: var(--bodyColor);
   height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,11 +48,11 @@ body {
 
 .content {
   background-color: var(--bodyShade);
-  width: 100%;
+  width: 95%;
   padding: 20px;
   border-radius: 0 0 5px 5px;
-  max-height: 40vh;
-  min-height: 40vh;
+  max-height: 50vh;
+  min-height: 50vh;
   overflow-y: hidden;
 }
 
@@ -117,6 +118,14 @@ dialog {
   box-shadow: 0 0 5px 100px var(--bodyBg);
   opacity: 0.7;
   
+}
+
+@media only screen and (max-width: 600px) {
+  .content {
+    width: 93vw;
+    height: 100vh;
+    max-height: 100vh;
+  }
 }
 
 .loader {

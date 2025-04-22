@@ -43,7 +43,7 @@ export default function ListIncidents() {
             {statusOptions.map(sev => <button key={sev} className={`btn sm ${filterStatus === sev ? 'active' : 'muted'}`} onClick={() => setFilterStatus(filterStatus === sev ? undefined : sev)}>{sev}</button>)}
           </div>
         </div>
-        {incidents && incidents?.length >= itemsPerPage ? (
+        {incidents && incidents?.length > itemsPerPage ? (
           <div className='paging'>
             <div className='btns'>
               <button className='btn muted sm' onClick={prevPage} disabled={page === 1}>

@@ -58,3 +58,11 @@
   width: 20px;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 600px) {
+  .incident .tool-box {
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+}

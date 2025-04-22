@@ -31,10 +31,12 @@
 
 .list-tools .btns .btn {
   border-radius: 0;
+  border-left: 1px solid silver;
 }
 
 .list-tools .btns .btn:first-child {
   border-radius: 5px 0 0 5px;
+  border-left: 0;
 }
 
 .list-tools .btns .btn:last-child {
@@ -43,6 +45,10 @@
 
 .list-tools .btn:disabled {
   opacity: 0.6;
+}
+
+.list-tools .btn:disabled:hover {
+  background-color: var(--muted-btn);
 }
 
 .list-tools .btn img {

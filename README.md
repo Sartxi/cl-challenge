@@ -6,9 +6,13 @@ Setup this application by cloning this repository and following these steps:
 1. Open up a terminal window and `cd server`
 2. Run `npm i && npm run api`
 
+this will start the API server on `http://localhost:4000/`
+
 ## Setup and run react client application
 1. Open up another terminal window and `cd client`
 2. Run `npm i && npm run start`
+
+this will start your application and open up a browser window at `http://localhost:3000/`
 
 ## Notes
 
@@ -17,13 +21,13 @@ I started by creating a apollo server application and I built out the basic Grap
 
 ### Client
 
-For the front end I decided to use the React context API to create a global state that provides the full list of incidents, edit and add incident form state, and toast messaging. The UI is simple offering a list of items (6 per page) with edit/delete functionality. The add and edit uses the same component with some conditional logic to decide which actions need to be taken. When a mutation is made in the UI a toast is displayed.
+For the front end I decided to use the React context API to create a global state that provides the full list of incidents, edit and add incident form state, and toast messaging. The UI is simple offering a list of items (6 per page) with edit/delete functionality. The add and edit uses the same component with some conditional logic to decide which actions need to be taken. When a mutation is made in the UI a toast is displayed. Overall I kept the design and structure of the application simple and easy to understand.
 
 ### Component Lib:
 * header - theme selector and new incident button
 * list - pagination and filtering state
 * incident tile - edit, delete, and set status elements
-* incident editor - form for editing and adding incidents
+* incident editor - modal form for editing and adding incidents
 * error display - display for error boundary
 * confirmation dialog - used when a incident is being deleted
 * toast component
