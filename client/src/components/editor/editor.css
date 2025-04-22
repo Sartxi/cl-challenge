@@ -1,0 +1,30 @@
+.edit-form h2 {
+  margin: 0 0 5px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--bodyColor);
+}
+
+.form,
+.form > * {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form {
+  gap: 15px;
+}
+
+.form input,
+.form select {
+  padding: 5px;
+  border-radius: 5px;
+  border: 0;
+  font-size: 1em;
+}
+
+.btns {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}

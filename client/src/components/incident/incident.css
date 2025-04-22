@@ -1,0 +1,60 @@
+.incident {
+  background-color: var(--headerShade);
+  padding: 10px 25px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto;
+  font-size: 1em;
+  padding: 0 15px 2px 10px;
+  color: black;
+  border-radius: 10px 0 15px 0;
+}
+
+.incident h2 {
+  margin: 25px 0 5px;
+}
+
+.incident p {
+  margin: 0 0 15px;
+}
+
+.badge.high {
+  background-color: red;
+}
+
+.badge.medium {
+  background-color: orange;
+}
+
+.badge.low {
+  background-color: yellow;
+}
+
+.incident .info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.incident .tool-box {
+  display: flex;
+  gap: 10px;
+}
+
+.incident .tool-box select {
+  padding: 5px;
+  border-radius: 5px;
+  border: 0;
+}
+
+.incident .tool-box img {
+  width: 20px;
+  cursor: pointer;
+}
