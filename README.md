@@ -1,46 +1,29 @@
-# Getting Started with Create React App
+# Incident Dashboard Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Setup this application by cloning this repository and following these steps:
 
-## Available Scripts
+## Setup graphql server API
+1. Open up a terminal window and `cd server`
+2. Run `npm i && npm run api`
 
-In the project directory, you can run:
+## Setup and run react client application
+1. Open up another terminal window and `cd client`
+2. Run `npm i && npm run start`
 
-### `npm start`
+## Notes
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### API
+I started by creating a apollo server application and I built out the basic GraphQL API using the example schema. This provides incidents query and an incedent by ID query to fetch incidents and the create, update, and delete mutations.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Client
 
-### `npm test`
+For the front end I decided to use the React context API to create a global state that provides the full list of incidents, edit and add incident form state, and toast messaging. The UI is simple offering a list of items (6 per page) with edit/delete functionality. The add and edit uses the same component with some conditional logic to decide which actions need to be taken. When a mutation is made in the UI a toast is displayed.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Component Lib:
+* header - theme selector and new incident button
+* list - pagination and filtering state
+* incident tile - edit, delete, and set status elements
+* incident editor - form for editing and adding incidents
+* error display - display for error boundary
+* confirmation dialog - used when a incident is being deleted
+* toast component
