@@ -12,6 +12,7 @@
   --secondary: #2cbe13;
   --tertiary: #13bea5;
   --complementary: #4f13be;
+  --muted-btn: #333;
 }
 
 html[data-theme="light"] {
@@ -19,6 +20,7 @@ html[data-theme="light"] {
   --bodyColor: #333;
   --headerShade: #eee;
   --bodyShade: #ddd;
+  --muted-btn: #777;
 }
 
 body {
@@ -49,8 +51,8 @@ body {
   padding: 20px;
   border-radius: 0 0 5px 5px;
   max-height: 40vh;
-  min-height: 30vh;
-  overflow-y: auto;
+  min-height: 40vh;
+  overflow-y: hidden;
 }
 
 .btn {
@@ -70,8 +72,13 @@ body {
     transform 150ms ease;
 }
 
+.btn.sm {
+  font-size: 0.8em;
+  padding: 5px 10px;
+}
+
 .btn.muted {
-  background-color: #333;
+  background-color: var(--muted-btn);
   color: white;
 }
 

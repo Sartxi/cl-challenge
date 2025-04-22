@@ -1,17 +1,18 @@
 import './incident.css';
-import { ConfirmProps, Incident, Status } from "../../types/app";
+import { ConfirmProps, Incident } from "../../types/app";
 import { useContext, useState } from 'react';
 import { DataContext } from '../../App';
 import { useMutation } from '@apollo/client';
 import { DELETE_INCIDENT, UPDATE_INCIDENT } from '../../graphql/incidents';
 import ConfirmDialog from '../confirm/confirm';
+import useStats from '../../hooks/useStats';
 
 export default function IncidentTile({ id, title, description, severity, status }: Incident) {
   const { setEditIncident, fetchIncidents, setToast } = useContext(DataContext);
   const [confirm, setConfirm] = useState<ConfirmProps>();
+  const { statusOptions } = useStats();
 
   const level = severity.toString().toLowerCase();
-  const statusOptions = Object.keys(Status).map((key: string) => Status[key as keyof typeof Status]);
 
   const [updateIncident] = useMutation(UPDATE_INCIDENT);
   const [deleteIncident] = useMutation(DELETE_INCIDENT);

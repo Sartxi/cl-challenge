@@ -7,8 +7,8 @@ export default function ConfirmDialog({ text, callback, close }: ConfirmProps) {
       <dialog open>
         <h2>{text}</h2>
         <div className="btns">
-          <button className='btn' onClick={() => callback()}>Confirm</button>
           <button className='btn muted' onClick={() => close()}>Nevermind</button>
+          <button className='btn' onClick={() => callback()}>Confirm</button>
         </div>
       </dialog>
     </>

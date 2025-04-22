@@ -4,5 +4,54 @@
   align-items: stretch;
   justify-content: space-evenly;
   flex-wrap: nowrap;
+  height: 100%;
   gap: 15px;
+}
+
+.incidents-list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  gap: 10px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.list-tools {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+}
+
+.list-tools .btns .btn {
+  border-radius: 0;
+}
+
+.list-tools .btns .btn:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.list-tools .btns .btn:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+.list-tools .btn:disabled {
+  opacity: 0.6;
+}
+
+.list-tools .btn img {
+  width: 10px;
+}
+
+.none {
+  background-color: var(--headerShade);
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
 }

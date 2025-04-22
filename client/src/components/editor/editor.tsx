@@ -4,16 +4,28 @@ import { useMutation } from "@apollo/client";
 import { ADD_INCIDENT, UPDATE_INCIDENT } from "../../graphql/incidents";
 import { useContext, useRef } from 'react';
 import { DataContext } from '../../App';
-import { Incident, Severity } from '../../types/app';
+import { Incident } from '../../types/app';
 import useIncident from '../../hooks/useIncident';
+import useStats from '../../hooks/useStats';
 
+function checkNullOrEmpty(obj: any) {
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      if (obj[key] === null || obj[key] === "" ) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
 
 export default function IncidentForm() {
   const dialogRef = useRef(null);
   const { editIncident, setEditIncident, fetchIncidents, setToast } = useContext(DataContext);
   const { incident, setIncident } = useIncident(editIncident);
 
-  const severityOptions = Object.keys(Severity).map((key: string) => Severity[key as keyof typeof Severity]);
+  const { severityOptions, statusOptions } = useStats();
+
   const updateForm = (field: any, data: any) => {
     const update = { ...incident, [field]: data } as Incident;
     setIncident(update);
@@ -23,7 +35,7 @@ export default function IncidentForm() {
   const [updateIncident] = useMutation(UPDATE_INCIDENT);
 
   const handleAddIncident = () => {
-    if (incident) {
+    if (incident && !checkNullOrEmpty(incident)) {
       const variables = {
         title: incident.title,
         description: incident.description,
@@ -35,8 +47,8 @@ export default function IncidentForm() {
 
       setToast?.({ text: `Successfully ${incident.id === 0 ? 'added' : 'edited'} the incident!`, duration: 1500, status: 'success' });
       fetchIncidents?.();
-    }
-    setEditIncident?.(null)
+      setEditIncident?.(null);
+    } else setToast?.({ text: 'All form feilds must be filled to save.', duration: 1500, status: 'danger' });
   }
 
   if (!incident) return <span />;
@@ -52,18 +64,26 @@ export default function IncidentForm() {
           </div>
           <div>
             <label>Description:</label>
-            <input type='text' value={incident.description} placeholder='Add a description' onChange={(e) => updateForm('description', e.target.value)} />
+            <textarea rows={3} value={incident.description} placeholder='Add a description' onChange={(e) => updateForm('description', e.target.value)} />
           </div>
-          <div>
-            <label>Severity</label>
-            <select name="severity" id="Severity" onChange={(e) => updateForm('severity', e.target.value)}>
-              {severityOptions.map(s => <option key={s} value={s}>{s}</option>)}
-            </select>
+          <div className='stats'>
+            <div>
+              <label>Severity</label>
+              <select name="severity" id="Severity" onChange={(e) => updateForm('severity', e.target.value)}>
+                {severityOptions.map(s => <option key={s} value={s}>{s}</option>)}
+              </select>
+            </div>
+            <div>
+              <label>Status</label>
+              <select name="status" id="Status" onChange={(e) => updateForm('status', e.target.value)}>
+                {statusOptions.map(s => <option key={s} value={s}>{s}</option>)}
+              </select>
+            </div>
           </div>
         </div>
         <div className='btns'>
-          <button className='btn' onClick={() => handleAddIncident()}>Save</button>
           <button className='btn muted' onClick={() => setEditIncident?.(null)}>Close</button>
+          <button className='btn' onClick={() => handleAddIncident()}>Save</button>
         </div>
       </dialog>
     </>
